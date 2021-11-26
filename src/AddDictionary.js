@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { createWord } from "./redux/modules/word";
+import { createWord, addWordFB } from "./redux/modules/word";
 import { useHistory } from "react-router-dom";
 function AddDictionary() {
   const word = React.useRef(null);
@@ -10,8 +10,15 @@ function AddDictionary() {
   const dispatch = useDispatch();
   const history = useHistory();
   const addWord = () => {
+    // dispatch(
+    //   createWord({
+    //     word: word.current.value,
+    //     explain: explain.current.value,
+    //     example: example.current.value,
+    //   })
+    // );
     dispatch(
-      createWord({
+      addWordFB({
         word: word.current.value,
         explain: explain.current.value,
         example: example.current.value,

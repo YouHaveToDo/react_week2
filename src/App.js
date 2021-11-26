@@ -4,8 +4,29 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import DictionaryList from "./DitionaryList";
 import AddDictionary from "./AddDictionary";
+import { useDispatch } from "react-redux";
+import { createWord, loadWordFB } from "./redux/modules/word";
+import { db } from "./firebase";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 
 function App() {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    // addDoc(collection(db, "word"), {
+    //   word: "ㅎ1ㅎ1ㅎ1",
+    //   explain: `히히를 변형한 단어. 숫자1을 '1'로 쓴다.`,
+    //   example: "저 친구가 초클릿을 줬어. ㅎ1ㅎ1",
+    // });
+    dispatch(loadWordFB());
+  }, []);
   const history = useHistory();
   return (
     <div className="App">
